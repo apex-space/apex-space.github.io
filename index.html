@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Apex Payload Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #01617d;
+        font-family: "Ubuntu", Arial;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: bold;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #01617d;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0; /* No indent on first p in td */
+      }
+
+      /* Table of fields */
+      .field-table td:nth-child(1) { /* Field */
+        width: 10em;
+      }
+      .field-table td:nth-child(2) { /* Type */
+        width: 10em;
+      }
+      .field-table td:nth-child(3) { /* Description */
+        width: auto;
+      }
+
+      /* Table of extensions */
+      .extension-table td:nth-child(1) { /* Extension */
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) { /* Type */
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) { /* Base */
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) { /* Number */
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) { /* Description */
+        width: auto;
+      }
+
+      /* Table of enum values. */
+      .enum-table td:nth-child(1) { /* Name */
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) { /* Number */
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) { /* Description */
+        width: auto;
+      }
+
+      /* Table of scalar value types. */
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+      /* Table of contents. */
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+      /* File heading div */
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+      /* The 'M', 'E' and 'X' badges in the ToC */
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #01617d;
+        background-color: #01617d;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    <!-- User custom CSS -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#gerneric_interface.proto">gerneric_interface.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.Bus2Paylod"><span class="badge">M</span>Bus2Paylod</a>
+                </li>
+              
+                <li>
+                  <a href="#.BusState"><span class="badge">M</span>BusState</a>
+                </li>
+              
+                <li>
+                  <a href="#.DownlinkFileAck"><span class="badge">M</span>DownlinkFileAck</a>
+                </li>
+              
+                <li>
+                  <a href="#.DownlinkFileRequest"><span class="badge">M</span>DownlinkFileRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.Header"><span class="badge">M</span>Header</a>
+                </li>
+              
+                <li>
+                  <a href="#.PayloadState"><span class="badge">M</span>PayloadState</a>
+                </li>
+              
+                <li>
+                  <a href="#.Paylod2Bus"><span class="badge">M</span>Paylod2Bus</a>
+                </li>
+              
+                <li>
+                  <a href="#.TimeLog"><span class="badge">M</span>TimeLog</a>
+                </li>
+              
+                <li>
+                  <a href="#.TimeLog.LeapSeconds"><span class="badge">M</span>TimeLog.LeapSeconds</a>
+                </li>
+              
+                <li>
+                  <a href="#.TimeLog.Time"><span class="badge">M</span>TimeLog.Time</a>
+                </li>
+              
+                <li>
+                  <a href="#.TimeLog.TimeStatus"><span class="badge">M</span>TimeLog.TimeStatus</a>
+                </li>
+              
+                <li>
+                  <a href="#.TimeLog.Timestamp"><span class="badge">M</span>TimeLog.Timestamp</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#.BusState.OperationEnum"><span class="badge">E</span>BusState.OperationEnum</a>
+                </li>
+              
+                <li>
+                  <a href="#.DownlinkFileAck.FileLinkEnum"><span class="badge">E</span>DownlinkFileAck.FileLinkEnum</a>
+                </li>
+              
+                <li>
+                  <a href="#.PayloadState.OperationEnum"><span class="badge">E</span>PayloadState.OperationEnum</a>
+                </li>
+              
+                <li>
+                  <a href="#.TimeLog.TimeStatus.SolutionStatus"><span class="badge">E</span>TimeLog.TimeStatus.SolutionStatus</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="gerneric_interface.proto">gerneric_interface.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".Bus2Paylod">Bus2Paylod</h3>
+        <p>Status message transmitted to Payload. </p><p>Transmit Rate: 10 Hz</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>header</td>
+                  <td><a href="#Header">Header</a></td>
+                  <td><p>unit: unitless, Message Header </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_x</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate x </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_y</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate y </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_z</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate z </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_w</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate w </p></td>
+                </tr>
+              
+                <tr>
+                  <td>x_rate</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, Bus Quaternion x rates </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y_rate</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, Bus Quaternion y rates </p></td>
+                </tr>
+              
+                <tr>
+                  <td>z_rate</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, Bus Quaternion z rates </p></td>
+                </tr>
+              
+                <tr>
+                  <td>w_rate</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, Bus Quaternion w rates </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Pos_Vel_x</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity x coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Pos_Vel_y</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity y coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Pos_Vel_z</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity z coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Pos_Vel_w</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity w coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bus_state</td>
+                  <td><a href="#BusState">BusState</a></td>
+                  <td><p>unit: unitless, Message containting bus state information </p></td>
+                </tr>
+              
+                <tr>
+                  <td>battery_level</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: percentage, State of charge of the battery </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".BusState">BusState</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>operation_state</td>
+                  <td><a href="#BusState.OperationEnum">BusState.OperationEnum</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DownlinkFileAck">DownlinkFileAck</h3>
+        <p>Async</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>file_status</td>
+                  <td><a href="#DownlinkFileAck.FileLinkEnum">DownlinkFileAck.FileLinkEnum</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>file_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td><p>Full file path </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DownlinkFileRequest">DownlinkFileRequest</h3>
+        <p>Async</p>
+
+        
+
+        
+      
+        <h3 id=".Header">Header</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>message_counter</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>timestamp</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".PayloadState">PayloadState</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>operation_state</td>
+                  <td><a href="#PayloadState.OperationEnum">PayloadState.OperationEnum</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Paylod2Bus">Paylod2Bus</h3>
+        <p>Constant 10 hz</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>header</td>
+                  <td><a href="#Header">Header</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_x</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_y</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_z</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quat_w</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>manauver_dv</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>safe_abort_dv</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>payload_state</td>
+                  <td><a href="#PayloadState">PayloadState</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".TimeLog">TimeLog</h3>
+        <p>Constant 1 Hz</p>
+
+        
+
+        
+      
+        <h3 id=".TimeLog.LeapSeconds">TimeLog.LeapSeconds</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>gps_leap_seconds</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>leap_seconds_delta</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".TimeLog.Time">TimeLog.Time</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>receiver_timestamp</td>
+                  <td><a href="#TimeLog.Timestamp">TimeLog.Timestamp</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>time_status</td>
+                  <td><a href="#TimeLog.TimeStatus">TimeLog.TimeStatus</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>leap_seconds</td>
+                  <td><a href="#TimeLog.LeapSeconds">TimeLog.LeapSeconds</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>clock_steer_counter</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>clock_offset</td>
+                  <td><a href="#float">float</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>clock_offset_standard_deviation</td>
+                  <td><a href="#float">float</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>clock_drift</td>
+                  <td><a href="#float">float</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>clock_drift_standard_deviation</td>
+                  <td><a href="#float">float</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".TimeLog.TimeStatus">TimeLog.TimeStatus</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>solution_status</td>
+                  <td><a href="#TimeLog.TimeStatus.SolutionStatus">TimeLog.TimeStatus.SolutionStatus</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>time_since_update</td>
+                  <td><a href="#float">float</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>time_since_fix</td>
+                  <td><a href="#float">float</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".TimeLog.Timestamp">TimeLog.Timestamp</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>week_number</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>milliseconds</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>microseconds</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id=".BusState.OperationEnum">BusState.OperationEnum</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SAFE_MODE</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>SUN_POINT</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATIONS_MODE</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>MAINTANCE</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>GROUND_TEST</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id=".DownlinkFileAck.FileLinkEnum">DownlinkFileAck.FileLinkEnum</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>REGISTERED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>COMPLETE</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id=".PayloadState.OperationEnum">PayloadState.OperationEnum</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SAFE_MODE</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>IDLE</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id=".TimeLog.TimeStatus.SolutionStatus">TimeLog.TimeStatus.SolutionStatus</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SOLUTION_NOT_COMPUTED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>COARSE_ADJUSTING</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>COARSE</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>COARSESTEERING</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FREEWHEELING</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FINE_ADJUSTING</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FINE</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>FINEBACKUP</td>
+                <td>7</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>INVALID_FIX</td>
+                <td>8</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>SMOOTHING</td>
+                <td>9</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
