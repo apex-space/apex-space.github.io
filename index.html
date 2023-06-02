@@ -172,23 +172,11 @@
         
           
           <li>
-            <a href="#gerneric_interface.proto">gerneric_interface.proto</a>
+            <a href="#aries_1.proto">aries_1.proto</a>
             <ul>
               
                 <li>
-                  <a href="#.Bus2Paylod"><span class="badge">M</span>Bus2Paylod</a>
-                </li>
-              
-                <li>
-                  <a href="#.BusState"><span class="badge">M</span>BusState</a>
-                </li>
-              
-                <li>
-                  <a href="#.DownlinkFileAck"><span class="badge">M</span>DownlinkFileAck</a>
-                </li>
-              
-                <li>
-                  <a href="#.DownlinkFileRequest"><span class="badge">M</span>DownlinkFileRequest</a>
+                  <a href="#.Bus2Payload"><span class="badge">M</span>Bus2Payload</a>
                 </li>
               
                 <li>
@@ -196,48 +184,43 @@
                 </li>
               
                 <li>
-                  <a href="#.PayloadState"><span class="badge">M</span>PayloadState</a>
-                </li>
-              
-                <li>
-                  <a href="#.Paylod2Bus"><span class="badge">M</span>Paylod2Bus</a>
-                </li>
-              
-                <li>
-                  <a href="#.TimeLog"><span class="badge">M</span>TimeLog</a>
-                </li>
-              
-                <li>
-                  <a href="#.TimeLog.LeapSeconds"><span class="badge">M</span>TimeLog.LeapSeconds</a>
-                </li>
-              
-                <li>
-                  <a href="#.TimeLog.Time"><span class="badge">M</span>TimeLog.Time</a>
-                </li>
-              
-                <li>
-                  <a href="#.TimeLog.TimeStatus"><span class="badge">M</span>TimeLog.TimeStatus</a>
-                </li>
-              
-                <li>
-                  <a href="#.TimeLog.Timestamp"><span class="badge">M</span>TimeLog.Timestamp</a>
+                  <a href="#.Payload2Bus"><span class="badge">M</span>Payload2Bus</a>
                 </li>
               
               
                 <li>
-                  <a href="#.BusState.OperationEnum"><span class="badge">E</span>BusState.OperationEnum</a>
+                  <a href="#.OperationEnum"><span class="badge">E</span>OperationEnum</a>
                 </li>
               
                 <li>
-                  <a href="#.DownlinkFileAck.FileLinkEnum"><span class="badge">E</span>DownlinkFileAck.FileLinkEnum</a>
+                  <a href="#.PayloadEnum"><span class="badge">E</span>PayloadEnum</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#time.proto">time.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.GNSSHeader"><span class="badge">M</span>GNSSHeader</a>
                 </li>
               
                 <li>
-                  <a href="#.PayloadState.OperationEnum"><span class="badge">E</span>PayloadState.OperationEnum</a>
+                  <a href="#.TimeMessage"><span class="badge">M</span>TimeMessage</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#.ClockStatus"><span class="badge">E</span>ClockStatus</a>
                 </li>
               
                 <li>
-                  <a href="#.TimeLog.TimeStatus.SolutionStatus"><span class="badge">E</span>TimeLog.TimeStatus.SolutionStatus</a>
+                  <a href="#.UTCStatus"><span class="badge">E</span>UTCStatus</a>
                 </li>
               
               
@@ -252,13 +235,13 @@
     
       
       <div class="file-heading">
-        <h2 id="gerneric_interface.proto">gerneric_interface.proto</h2><a href="#title">Top</a>
+        <h2 id="aries_1.proto">aries_1.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id=".Bus2Paylod">Bus2Paylod</h3>
-        <p>Status message transmitted to Payload. </p><p>Transmit Rate: 10 Hz</p>
+        <h3 id=".Bus2Payload">Bus2Payload</h3>
+        <p>Status message transmitted from Bus to Payload. </p><p>Transmit Rate: 10 Hz</p>
 
         
           <table class="field-table">
@@ -276,25 +259,25 @@
                 <tr>
                   <td>quat_x</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate x </p></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate x refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_y</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate y </p></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate y refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_z</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate z </p></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate z refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_w</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate w </p></td>
+                  <td><p>unit: unitless, Bus Quaternion coordinate w refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
@@ -322,32 +305,56 @@
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Pos_Vel_x</td>
+                  <td>ECI_to_Body_Pos_x</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity x coordinate </p></td>
+                  <td><p>unit: meter, ECI (Earth-Centered Inertial) to body position x coordinate </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Pos_Vel_y</td>
+                  <td>ECI_to_Body_Pos_y</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity y coordinate </p></td>
+                  <td><p>unit: meter, ECI (Earth-Centered Inertial) to body position y coordinate </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Pos_Vel_z</td>
+                  <td>ECI_to_Body_Pos_z</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity z coordinate </p></td>
+                  <td><p>unit: meter, ECI (Earth-Centered Inertial) to body position z coordinate </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Pos_Vel_w</td>
+                  <td>ECI_to_Body_Pos_w</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: rad/s, ECI (Earth-Centered Inertial) to Body Position/Velocity w coordinate </p></td>
+                  <td><p>unit: meter, ECI (Earth-Centered Inertial) to body position w coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Vel_x</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: meters/second, ECI (Earth-Centered Inertial) to body velocity x coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Vel_y</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: meters/second, ECI (Earth-Centered Inertial) to body velocity y coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Vel_z</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: meters/second, ECI (Earth-Centered Inertial) to body velocity z coordinate </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ECI_to_Body_Vel_w</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: meters/second, ECI (Earth-Centered Inertial) to body velocity w coordinate </p></td>
                 </tr>
               
                 <tr>
                   <td>bus_state</td>
-                  <td><a href="#BusState">BusState</a></td>
+                  <td><a href="#OperationEnum">OperationEnum</a></td>
                   <td><p>unit: unitless, Message containting bus state information </p></td>
                 </tr>
               
@@ -357,74 +364,21 @@
                   <td><p>unit: percentage, State of charge of the battery </p></td>
                 </tr>
               
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".BusState">BusState</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
                 <tr>
-                  <td>operation_state</td>
-                  <td><a href="#BusState.OperationEnum">BusState.OperationEnum</a></td>
-                  <td><p> </p></td>
+                  <td>time_on</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: Seconds, Time since last reset. </p></td>
                 </tr>
               
             </tbody>
           </table>
 
           
-
-        
-      
-        <h3 id=".DownlinkFileAck">DownlinkFileAck</h3>
-        <p>Async</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>file_status</td>
-                  <td><a href="#DownlinkFileAck.FileLinkEnum">DownlinkFileAck.FileLinkEnum</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>file_name</td>
-                  <td><a href="#string">string</a></td>
-                  <td><p>Full file path </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".DownlinkFileRequest">DownlinkFileRequest</h3>
-        <p>Async</p>
-
-        
 
         
       
         <h3 id=".Header">Header</h3>
-        <p></p>
+        <p>Header containing message count and time.</p>
 
         
           <table class="field-table">
@@ -452,31 +406,8 @@
 
         
       
-        <h3 id=".PayloadState">PayloadState</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>operation_state</td>
-                  <td><a href="#PayloadState.OperationEnum">PayloadState.OperationEnum</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".Paylod2Bus">Paylod2Bus</h3>
-        <p>Constant 10 hz</p>
+        <h3 id=".Payload2Bus">Payload2Bus</h3>
+        <p>Status\Command message transmitted Payload to Bus.</p><p>Transmit Rate: 10 Hz</p>
 
         
           <table class="field-table">
@@ -488,220 +419,73 @@
                 <tr>
                   <td>header</td>
                   <td><a href="#Header">Header</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: unitless, Message Header </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_x</td>
                   <td><a href="#double">double</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: unitless, Payload Quaternion coordinate x refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_y</td>
                   <td><a href="#double">double</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: unitless, Payload Quaternion coordinate y refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_z</td>
                   <td><a href="#double">double</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: unitless, Payload Quaternion coordinate z refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_w</td>
                   <td><a href="#double">double</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: unitless, Payload Quaternion coordinate q refernced to an internal frame </p></td>
                 </tr>
               
                 <tr>
                   <td>manauver_dv</td>
                   <td><a href="#double">double</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: meters/second, command delta-v manauver from the payload to bus. </p></td>
                 </tr>
               
                 <tr>
                   <td>safe_abort_dv</td>
                   <td><a href="#double">double</a></td>
-                  <td><p> </p></td>
+                  <td><p>uint: meters/second, delta-v abort limit for the payload. </p></td>
                 </tr>
               
                 <tr>
                   <td>payload_state</td>
-                  <td><a href="#PayloadState">PayloadState</a></td>
-                  <td><p> </p></td>
+                  <td><a href="#PayloadEnum">PayloadEnum</a></td>
+                  <td><p>unit: unitless, Current operational state of the payload. </p></td>
                 </tr>
               
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".TimeLog">TimeLog</h3>
-        <p>Constant 1 Hz</p>
-
-        
-
-        
-      
-        <h3 id=".TimeLog.LeapSeconds">TimeLog.LeapSeconds</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-            </thead>
-            <tbody>
+                <tr>
+                  <td>desired_mode</td>
+                  <td><a href="#OperationEnum">OperationEnum</a></td>
+                  <td><p>unit: unitless, Desired operational state of the bus. </p></td>
+                </tr>
               
                 <tr>
-                  <td>gps_leap_seconds</td>
+                  <td>fault_field</td>
                   <td><a href="#uint32">uint32</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: unitless, Fault field defined by payload. </p></td>
                 </tr>
               
                 <tr>
-                  <td>leap_seconds_delta</td>
+                  <td>state_of_health</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td><p>unit: unitless, Boolean indicator of payload health. 1 - OK, 0 - NONOP </p></td>
+                </tr>
+              
+                <tr>
+                  <td>time_on</td>
                   <td><a href="#uint32">uint32</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".TimeLog.Time">TimeLog.Time</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>receiver_timestamp</td>
-                  <td><a href="#TimeLog.Timestamp">TimeLog.Timestamp</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>time_status</td>
-                  <td><a href="#TimeLog.TimeStatus">TimeLog.TimeStatus</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>leap_seconds</td>
-                  <td><a href="#TimeLog.LeapSeconds">TimeLog.LeapSeconds</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>clock_steer_counter</td>
-                  <td><a href="#uint32">uint32</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>clock_offset</td>
-                  <td><a href="#float">float</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>clock_offset_standard_deviation</td>
-                  <td><a href="#float">float</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>clock_drift</td>
-                  <td><a href="#float">float</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>clock_drift_standard_deviation</td>
-                  <td><a href="#float">float</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".TimeLog.TimeStatus">TimeLog.TimeStatus</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>solution_status</td>
-                  <td><a href="#TimeLog.TimeStatus.SolutionStatus">TimeLog.TimeStatus.SolutionStatus</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>time_since_update</td>
-                  <td><a href="#float">float</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>time_since_fix</td>
-                  <td><a href="#float">float</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".TimeLog.Timestamp">TimeLog.Timestamp</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>week_number</td>
-                  <td><a href="#uint32">uint32</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>milliseconds</td>
-                  <td><a href="#uint32">uint32</a></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>microseconds</td>
-                  <td><a href="#uint32">uint32</a></td>
-                  <td><p> </p></td>
+                  <td><p>unit: Seconds. Time since last reset. </p></td>
                 </tr>
               
             </tbody>
@@ -713,8 +497,8 @@
       
 
       
-        <h3 id=".BusState.OperationEnum">BusState.OperationEnum</h3>
-        <p></p>
+        <h3 id=".OperationEnum">OperationEnum</h3>
+        <p>Bus State enum.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -722,40 +506,40 @@
           <tbody>
             
               <tr>
-                <td>SAFE_MODE</td>
+                <td>SAFE_MODE_BUS</td>
                 <td>0</td>
-                <td><p></p></td>
+                <td><p>Bus is in safe mode. Will not respond to commands from payload.</p></td>
               </tr>
             
               <tr>
                 <td>SUN_POINT</td>
-                <td>2</td>
-                <td><p></p></td>
+                <td>1</td>
+                <td><p>Bus is in sun pointing. Will not respond to commands from payload.</p></td>
               </tr>
             
               <tr>
                 <td>OPERATIONS_MODE</td>
-                <td>3</td>
-                <td><p></p></td>
+                <td>2</td>
+                <td><p>Bus is in operations mode. Will respond to commands from payload.</p></td>
               </tr>
             
               <tr>
                 <td>MAINTANCE</td>
-                <td>4</td>
-                <td><p></p></td>
+                <td>3</td>
+                <td><p>Bus is in maintance mode. Will respond to commands from payload.</p></td>
               </tr>
             
               <tr>
                 <td>GROUND_TEST</td>
-                <td>5</td>
-                <td><p></p></td>
+                <td>4</td>
+                <td><p>Bus is in ground test mode. Will respond to commands from payload.</p></td>
               </tr>
             
           </tbody>
         </table>
       
-        <h3 id=".DownlinkFileAck.FileLinkEnum">DownlinkFileAck.FileLinkEnum</h3>
-        <p></p>
+        <h3 id=".PayloadEnum">PayloadEnum</h3>
+        <p>Payload State enum.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -763,45 +547,178 @@
           <tbody>
             
               <tr>
-                <td>REGISTERED</td>
+                <td>SAFE_MODE_PAYLOAD</td>
                 <td>0</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>COMPLETE</td>
-                <td>1</td>
-                <td><p></p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-      
-        <h3 id=".PayloadState.OperationEnum">PayloadState.OperationEnum</h3>
-        <p></p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>SAFE_MODE</td>
-                <td>0</td>
-                <td><p></p></td>
+                <td><p>Payload is in safe mode. All commmand fields will be ignored by bus.</p></td>
               </tr>
             
               <tr>
                 <td>IDLE</td>
+                <td>1</td>
+                <td><p>Payload is in idle mode. All commmand fields will be ignored by bus.</p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATIONAL</td>
                 <td>2</td>
-                <td><p></p></td>
+                <td><p>Payload is in Operational Mode. Command fields will be acted upon by bus.</p></td>
               </tr>
             
           </tbody>
         </table>
       
-        <h3 id=".TimeLog.TimeStatus.SolutionStatus">TimeLog.TimeStatus.SolutionStatus</h3>
-        <p></p>
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="time.proto">time.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".GNSSHeader">GNSSHeader</h3>
+        <p>Relevant info from the header message of the GNSS reciever.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>time_status</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: N\A, Indicates quality of GPS refernce time </p></td>
+                </tr>
+              
+                <tr>
+                  <td>week</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: N\A, GPS reference week number </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ms</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: millisecond, Milliseconds from the beginning of the GPS reference week </p></td>
+                </tr>
+              
+                <tr>
+                  <td>receiver_status</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: N\A, 32-bits representing the status of various hardware and software components of the receiver </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".TimeMessage">TimeMessage</h3>
+        <p>Status message transmitted from Bus to Payload. </p><p>Transmit Rate: 10 Hz</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>header_time</td>
+                  <td><a href="#Header">Header</a></td>
+                  <td><p>unit: N\A, Message Header </p></td>
+                </tr>
+              
+                <tr>
+                  <td>header</td>
+                  <td><a href="#GNSSHeader">GNSSHeader</a></td>
+                  <td><p>unit: N\A, GNSS Header </p></td>
+                </tr>
+              
+                <tr>
+                  <td>clock_status</td>
+                  <td><a href="#ClockStatus">ClockStatus</a></td>
+                  <td><p>unit: N\A, Clock status information </p></td>
+                </tr>
+              
+                <tr>
+                  <td>offset</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: seconds, The offset of GPS system time from UTC time, computed using almanac parameters. UTC time is GPS reference time plus the current UTC offset minus the receiver clock offset. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>offset_std</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: seconds, Receiver clock offset standard deviation. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_offset</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: seconds. The offset of GPS system time from UTC time, computed using almanac parameters. UTC time is GPS reference time plus the current UTC offset minus the receiver clock offset </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_year</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: years, UTC year </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_month</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: month, UTC months </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_day</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: day, UTC days </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_hour</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: hour, UTC hours </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_min</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: minute, UTC minutes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_ms</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td><p>unit: millisecond, UTC milliseconds </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_status</td>
+                  <td><a href="#UTCStatus">UTCStatus</a></td>
+                  <td><p>unit: N\A, utc status </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id=".ClockStatus">ClockStatus</h3>
+        <p>Clock status of the reciever.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -809,62 +726,55 @@
           <tbody>
             
               <tr>
-                <td>SOLUTION_NOT_COMPUTED</td>
+                <td>VALID</td>
                 <td>0</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>COARSE_ADJUSTING</td>
+                <td>CONVERGING</td>
                 <td>1</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>COARSE</td>
+                <td>ITERATING</td>
                 <td>2</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>COARSESTEERING</td>
+                <td>INVALID</td>
                 <td>3</td>
                 <td><p></p></td>
               </tr>
             
+          </tbody>
+        </table>
+      
+        <h3 id=".UTCStatus">UTCStatus</h3>
+        <p>UTC message status.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
               <tr>
-                <td>FREEWHEELING</td>
-                <td>4</td>
+                <td>INVLAID</td>
+                <td>0</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>FINE_ADJUSTING</td>
-                <td>5</td>
+                <td>UTC_VALID</td>
+                <td>1</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>FINE</td>
-                <td>6</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>FINEBACKUP</td>
-                <td>7</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>INVALID_FIX</td>
-                <td>8</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>SMOOTHING</td>
-                <td>9</td>
+                <td>WARNING</td>
+                <td>2</td>
                 <td><p></p></td>
               </tr>
             
