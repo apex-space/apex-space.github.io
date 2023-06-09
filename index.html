@@ -241,7 +241,7 @@
 
       
         <h3 id=".Bus2Payload">Bus2Payload</h3>
-        <p>Status message transmitted from Bus to Payload. </p><p>Transmit Rate: 10 Hz</p>
+        <p>Status message transmitted from Bus to Payload. </p><p>Transmit Rate: 10 Hz</p><p>Note: For this application CBI (Center Body Inertial) is equivalent to ECI (Earth Center Inertial).</p>
 
         
           <table class="field-table">
@@ -259,91 +259,97 @@
                 <tr>
                   <td>quat_x</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate x refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Estimated inertial to Bus body quaternion vector component x </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_y</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate y refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Estimated inertial to Bus body quaternion vector component y </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_z</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate z refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Estimated inertial to Bus body quaternion vector component z </p></td>
                 </tr>
               
                 <tr>
                   <td>quat_w</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Bus Quaternion coordinate w refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Estimated inertial to Bus body quaternion scalar component </p></td>
                 </tr>
               
                 <tr>
                   <td>x_rate</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: rad/s, Bus Quaternion x rates </p></td>
+                  <td><p>unit: rad/s, Bus estimated body rate x component </p></td>
                 </tr>
               
                 <tr>
                   <td>y_rate</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: rad/s, Bus Quaternion y rates </p></td>
+                  <td><p>unit: rad/s, Bus estimated body rate y component </p></td>
                 </tr>
               
                 <tr>
                   <td>z_rate</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: rad/s, Bus Quaternion z rates </p></td>
+                  <td><p>unit: rad/s, Bus estimated body rate z component </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Pos_x</td>
+                  <td>PosCBI_x</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meter, ECI (Earth-Centered Inertial) to CBI (Center Body Inertial) x coordinate </p></td>
+                  <td><p>unit: meter, Estimated CBI to bus CG position ECI x coordinate </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Pos_y</td>
+                  <td>PosCBI_y</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meter, ECI (Earth-Centered Inertial) to CBI (Center Body Inertial) y coordinate </p></td>
+                  <td><p>unit: meter, Estimated CBI to bus CG position ECI y coordinate </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Pos_z</td>
+                  <td>PosCBI_z</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meter, ECI (Earth-Centered Inertial) to CBI (Center Body Inertial) z coordinate </p></td>
+                  <td><p>unit: meter, Estimated CBI to bus CG position ECI z coordinate </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Vel_x</td>
+                  <td>VelCBI_x</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meters/second, ECI (Earth-Centered Inertial) to CBI (Center Body Inertial) velocity x coordinate </p></td>
+                  <td><p>unit: meters/second, Estimated bus CG velocity CBI x coordinate relative to ECI frame </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Vel_y</td>
+                  <td>VelCBI_y</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meters/second, ECI (Earth-Centered Inertial) to CBI (Center Body Inertial) velocity y coordinate </p></td>
+                  <td><p>unit: meters/second, Estimated bus CG velocity CBI y coordinate relative to ECI frame </p></td>
                 </tr>
               
                 <tr>
-                  <td>ECI_to_Body_Vel_z</td>
+                  <td>VelCBI_z</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meters/second, ECI (Earth-Centered Inertial) to CBI (Center Body Inertial) velocity z coordinate </p></td>
+                  <td><p>unit: meters/second, Estimated bus CG velocity CBI z coordinate relative to ECI frame </p></td>
                 </tr>
               
                 <tr>
                   <td>bus_state</td>
                   <td><a href="#OperationEnum">OperationEnum</a></td>
-                  <td><p>unit: unitless, Message containting bus state information </p></td>
+                  <td><p>unit: unitless, Message containing bus state information </p></td>
                 </tr>
               
                 <tr>
                   <td>battery_level</td>
                   <td><a href="#double">double</a></td>
                   <td><p>unit: percentage, State of charge of the battery </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ThrusterOntime</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: Seconds, On time of each thruster on the Bus. Ignore all values </p></td>
                 </tr>
               
                 <tr>
@@ -389,7 +395,7 @@
         
       
         <h3 id=".Payload2Bus">Payload2Bus</h3>
-        <p>Status\Command message transmitted Payload to Bus.</p><p>Transmit Rate: 10 Hz</p><p>In OPERATIONS_MODE_INTERTIAL_POINTING, the payload commands an intertial frame and the bus ... < GNC Language ></p><p>In OPERATIONS_MODE_DELTA_MANEUVER, the payload commands a thrust (delta v), and the bus ... < GNC Language ></p>
+        <p>Status\Command message transmitted Payload to Bus.</p><p>Transmit Rate: 10 Hz</p>
 
         
           <table class="field-table">
@@ -405,61 +411,79 @@
                 </tr>
               
                 <tr>
-                  <td>quat_x</td>
+                  <td>quat_x_cmd</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Payload Quaternion coordinate x refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Commanded inertial to Bus body quaternion vector component x </p></td>
                 </tr>
               
                 <tr>
-                  <td>quat_y</td>
+                  <td>quat_y_cmd</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Payload Quaternion coordinate y refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Commanded inertial to Bus body quaternion vector component y </p></td>
                 </tr>
               
                 <tr>
-                  <td>quat_z</td>
+                  <td>quat_z_cmd</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Payload Quaternion coordinate z refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Commanded inertial to Bus body quaternion vector component z </p></td>
                 </tr>
               
                 <tr>
-                  <td>quat_w</td>
+                  <td>quat_w_cmd</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: unitless, Payload Quaternion coordinate q refernced to an internal frame </p></td>
+                  <td><p>unit: unitless, Commanded inertial to Bus body quaternion scalar component </p></td>
                 </tr>
               
                 <tr>
-                  <td>manauver_dv_x</td>
+                  <td>accel_x_cmd</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meters/second, command delta-v manauver from the payload to bus. </p></td>
+                  <td><p>unit: meters/second^2, Commanded acceleration from the payload to bus. </p></td>
                 </tr>
               
                 <tr>
-                  <td>manauver_dv_y</td>
+                  <td>accel_y_cmd</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meters/second, command delta-v manauver from the payload to bus. </p></td>
+                  <td><p>unit: meters/second^2, Commanded acceleration from the payload to bus. </p></td>
                 </tr>
               
                 <tr>
-                  <td>manauver_dv_z</td>
+                  <td>accel_z_cmd</td>
                   <td><a href="#double">double</a></td>
-                  <td><p>unit: meters/second, command delta-v manauver from the payload to bus. </p></td>
+                  <td><p>unit: meters/second^2, Commanded acceleration from the payload to bus. </p></td>
                 </tr>
               
                 <tr>
-                  <td>safe_abort_dv_x</td>
+                  <td>x_bus_rate_cmd</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, Bus Commanded body rate x component </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y_bus_rate_cmd</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, Bus Commanded body rate y component </p></td>
+                </tr>
+              
+                <tr>
+                  <td>z_bus_rate_cmd</td>
+                  <td><a href="#double">double</a></td>
+                  <td><p>unit: rad/s, Bus Commanded body rate z component </p></td>
+                </tr>
+              
+                <tr>
+                  <td>safe_abort_dv_bdy_x</td>
                   <td><a href="#double">double</a></td>
                   <td><p>uint: meters/second, delta-v abort limit for the payload. </p></td>
                 </tr>
               
                 <tr>
-                  <td>safe_abort_dv_y</td>
+                  <td>safe_abort_dv_bdy_y</td>
                   <td><a href="#double">double</a></td>
                   <td><p>uint: meters/second, delta-v abort limit for the payload. </p></td>
                 </tr>
               
                 <tr>
-                  <td>safe_abort_dv_z</td>
+                  <td>safe_abort_dv_bdy_z</td>
                   <td><a href="#double">double</a></td>
                   <td><p>uint: meters/second, delta-v abort limit for the payload. </p></td>
                 </tr>
@@ -538,7 +562,7 @@
               <tr>
                 <td>MAINTANCE</td>
                 <td>4</td>
-                <td><p>Bus is in maintance mode. Will respond to commands from payload.</p></td>
+                <td><p>Bus is in maintenance mode. Will respond to commands from payload.</p></td>
               </tr>
             
               <tr>
@@ -561,13 +585,13 @@
               <tr>
                 <td>SAFE_MODE_PAYLOAD</td>
                 <td>0</td>
-                <td><p>Payload is in safe mode. All commmand fields will be ignored by bus.</p></td>
+                <td><p>Payload is in safe mode. All command fields will be ignored by bus.</p></td>
               </tr>
             
               <tr>
                 <td>IDLE</td>
                 <td>1</td>
-                <td><p>Payload is in idle mode. All commmand fields will be ignored by bus.</p></td>
+                <td><p>Payload is in idle mode. All command fields will be ignored by bus.</p></td>
               </tr>
             
               <tr>
@@ -988,10 +1012,10 @@
         
       </tbody>
     </table>
-    <h2 id="scalar-value-types">GNC State Diagram</h2>
-
-    <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;Electron\&quot; modified=\&quot;2023-06-03T00:01:08.975Z\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36\&quot; etag=\&quot;H8sZMKBXklXK2mRmbXQB\&quot; version=\&quot;21.2.8\&quot; type=\&quot;device\&quot;&gt;\n  &lt;diagram name=\&quot;Page-1\&quot; id=\&quot;YRaACwGj6K8RCirJfaAv\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;909\&quot; dy=\&quot;2214\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;850\&quot; pageHeight=\&quot;1100\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-28\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-24\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;650\&quot; y=\&quot;500\&quot; /&gt;\n              &lt;mxPoint x=\&quot;130\&quot; y=\&quot;500\&quot; /&gt;\n              &lt;mxPoint x=\&quot;130\&quot; y=\&quot;240\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-29\&quot; value=\&quot;FDIR Abort\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot; parent=\&quot;nIcpe9TIoqtnm3hHLV9u-28\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.2604\&quot; y=\&quot;4\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-24\&quot; value=\&quot;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;505\&quot; y=\&quot;280\&quot; width=\&quot;290\&quot; height=\&quot;140\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-26\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-24\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;650\&quot; y=\&quot;270\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-30\&quot; value=\&quot;FDIR Abort\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.185\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;650\&quot; y=\&quot;40\&quot; /&gt;\n              &lt;mxPoint x=\&quot;130\&quot; y=\&quot;40\&quot; /&gt;\n              &lt;mxPoint x=\&quot;130\&quot; y=\&quot;240\&quot; /&gt;\n            &lt;/Array&gt;\n            &lt;mxPoint as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot; value=\&quot;SUN_POINTING\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;110\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-5\&quot; value=\&quot;OPERATIONS MODE &amp;lt;br&amp;gt;INTERTIAL POINTING\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;665\&quot; y=\&quot;320\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-7\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&amp;quot;&amp;gt;OPERATIONS MODE&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;border-color: var(--border-color); color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&amp;quot;&amp;gt;DELTA &amp;lt;br&amp;gt;MANUEVER&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;525\&quot; y=\&quot;320\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-13\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-12\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;210\&quot; y=\&quot;100\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-15\&quot; value=\&quot;Manual Command &amp;lt;br&amp;gt;from operator&amp;amp;nbsp;\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot; parent=\&quot;nIcpe9TIoqtnm3hHLV9u-13\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.033\&quot; y=\&quot;-2\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-17\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-16\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;210\&quot; y=\&quot;410\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-19\&quot; value=\&quot;Manual Command&amp;lt;br style=&amp;quot;border-color: var(--border-color);&amp;quot;&amp;gt;from operator&amp;amp;nbsp;\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot; parent=\&quot;nIcpe9TIoqtnm3hHLV9u-17\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.2366\&quot; y=\&quot;-2\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-20\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;240\&quot; /&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;140\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-21\&quot; value=\&quot;Manual Command&amp;lt;br style=&amp;quot;border-color: var(--border-color);&amp;quot;&amp;gt;from operator or Scripted Sequence\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot; parent=\&quot;nIcpe9TIoqtnm3hHLV9u-20\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.4268\&quot; y=\&quot;-1\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;40\&quot; y=\&quot;-1\&quot; as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; value=\&quot;SAFE_MODE\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;150\&quot; y=\&quot;210\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-27\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-12\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;110\&quot; /&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;140\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-12\&quot; value=\&quot;MAINTANCE\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;280\&quot; y=\&quot;70\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-16\&quot; value=\&quot;GROUND TEST\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;280\&quot; y=\&quot;380\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-25\&quot; value=\&quot;Payload Modes\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;280\&quot; width=\&quot;110\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
-    <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
-    </body>
+        <h2 id="Operation State Machine">State Machine Diagram</h2>
+        <text> The bus is commanded between states via either ground commands or automated sequences. Once in  Operation mode, the bus will have a variety(SunAq, RateDamp,ect) of GNC guidance modes that it can transition to. In External Guidance, the bus will close the loop on the commands sent in the Payload2Bus message. </text>
+        <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;Electron\&quot; modified=\&quot;2023-06-08T21:59:50.773Z\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36\&quot; etag=\&quot;qjwthYzOMzZCSoblmAt8\&quot; version=\&quot;21.2.8\&quot; type=\&quot;device\&quot;&gt;\n  &lt;diagram name=\&quot;Page-1\&quot; id=\&quot;YRaACwGj6K8RCirJfaAv\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;1728\&quot; dy=\&quot;1004\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;850\&quot; pageHeight=\&quot;1100\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-30\&quot; value=\&quot;FDIR Abort\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.185\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;650\&quot; y=\&quot;40\&quot; /&gt;\n              &lt;mxPoint x=\&quot;130\&quot; y=\&quot;40\&quot; /&gt;\n              &lt;mxPoint x=\&quot;130\&quot; y=\&quot;240\&quot; /&gt;\n            &lt;/Array&gt;\n            &lt;mxPoint as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot; value=\&quot;Operation\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;110\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-13\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-12\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;210\&quot; y=\&quot;100\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-15\&quot; value=\&quot;Manual Command &amp;lt;br&amp;gt;from operator&amp;amp;nbsp;\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; parent=\&quot;nIcpe9TIoqtnm3hHLV9u-13\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.033\&quot; y=\&quot;-2\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-17\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-16\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;210\&quot; y=\&quot;410\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-19\&quot; value=\&quot;Manual Command&amp;lt;br style=&amp;quot;border-color: var(--border-color);&amp;quot;&amp;gt;from operator&amp;amp;nbsp;\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; parent=\&quot;nIcpe9TIoqtnm3hHLV9u-17\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.2366\&quot; y=\&quot;-2\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-20\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;240\&quot; /&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;140\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-21\&quot; value=\&quot;Manual Command&amp;lt;br style=&amp;quot;border-color: var(--border-color);&amp;quot;&amp;gt;from operator or Scripted Sequence\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; parent=\&quot;nIcpe9TIoqtnm3hHLV9u-20\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot;&gt;\n          &lt;mxGeometry x=\&quot;-0.4268\&quot; y=\&quot;-1\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;40\&quot; y=\&quot;-1\&quot; as=\&quot;offset\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-11\&quot; value=\&quot;SAFE_MODE\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;150\&quot; y=\&quot;210\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-27\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-12\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;110\&quot; /&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;140\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-12\&quot; value=\&quot;MAINTANCE\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;280\&quot; y=\&quot;70\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-1\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;nIcpe9TIoqtnm3hHLV9u-16\&quot; target=\&quot;nIcpe9TIoqtnm3hHLV9u-4\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;410\&quot; /&gt;\n              &lt;mxPoint x=\&quot;480\&quot; y=\&quot;140\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;nIcpe9TIoqtnm3hHLV9u-16\&quot; value=\&quot;GROUND TEST\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;280\&quot; y=\&quot;380\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-4\&quot; value=\&quot;\&quot; style=\&quot;shape=flexArrow;endArrow=classic;html=1;rounded=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;650\&quot; y=\&quot;215\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;650\&quot; y=\&quot;285.71067811865476\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-5\&quot; value=\&quot;Sun Aquisition&amp;amp;nbsp;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;360\&quot; width=\&quot;120\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-7\&quot; value=\&quot;GNC Guidance Modes\&quot; style=\&quot;edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];\&quot; vertex=\&quot;1\&quot; connectable=\&quot;0\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;650\&quot; y=\&quot;320.0033333333332\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-8\&quot; value=\&quot;Idle\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;330\&quot; width=\&quot;120\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-9\&quot; value=\&quot;Slew\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;390\&quot; width=\&quot;120\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-10\&quot; value=\&quot;RateDamp\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;420\&quot; width=\&quot;120\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;29YXwH4CJdCw3VDOTm9A-11\&quot; value=\&quot;External Guidance\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;590\&quot; y=\&quot;450\&quot; width=\&quot;120\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
+        <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+        </body>
   </body>
 </html>
